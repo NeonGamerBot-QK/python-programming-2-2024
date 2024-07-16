@@ -26,11 +26,14 @@ def evaluate_guess(guess, secret_word):
     # Determine how many letters in the guess are in the secret word
 
     # YOUR CODE GOES HERE
+    
     pass
 
 def play_wordle():
     # Loop through the game until the user guesses the word or runs out of guesses
+
     # YOUR CODE GOES HERE
+
     pass
 
 if __name__ == "__main__":
