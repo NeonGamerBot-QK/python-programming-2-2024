@@ -1,4 +1,4 @@
-# File Analysis Tool
+# Project 3: Implementing wc 
 
 This Python script mimics the functionality of the Unix `wc` command, allowing you to count words, lines, bytes, and regex matches in a file.
 
