@@ -1,0 +1,1 @@
+console.log(require('fs').readFileSync('test_files/meditations.txt').toString().split('\n').length)

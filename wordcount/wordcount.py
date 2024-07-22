@@ -1,21 +1,31 @@
 import sys
 import argparse
 import re
-
+import os
 def get_word_count(file):
     # YOUR CODE GOES HERE
+    content = str(file.read())
+    # print(content)
+    return len(content.split(' '))
     pass
 
 def get_byte_count(file):
    # YOUR CODE GOES HERE
-    pass
+#    print(type(file.read1()))
+   return os.path.getsize(file.name)
+   pass
 
 def get_line_count(file):
     # YOUR CODE GOES HERE
+    count = 0
+    for line in file:
+        count+=1
+    return count
     pass
 
 def get_regex_count(file, pattern):
     # YOUR CODE GOES HERE
+    return len(re.findall(pattern=pattern, string=str(file.read())))
     pass
 
 def main():
@@ -27,10 +37,9 @@ def main():
     parser.add_argument('filename', nargs='?', type=str, help='File to process (default: standard input)')
     
     args = parser.parse_args()
-
+    counts = {}
     if args.filename:
-        with open(args.filename, 'rt') as file_stream:
-            counts = {}
+        with open(args.filename, 'rb') as file_stream:
             if args.words:
                 counts['words'] = get_word_count(file_stream)
                 file_stream.seek(0)  
@@ -49,13 +58,13 @@ def main():
 
     # Print the counts in the requested order
     if 'lines' in counts:
-        print(counts['lines'], end=' ')
+        print(counts['lines'], end='L ')
     if 'words' in counts:
-        print(counts['words'], end=' ')
+        print(counts['words'], end='W ')
     if 'bytes' in counts:
-        print(counts['bytes'], end=' ')
+        print(counts['bytes'], end='B ')
     if 'regex' in counts:
-        print(counts['regex'], end=' ')
+        print(counts['regex'], end='R ')
 
     if filename:
         print(filename)
