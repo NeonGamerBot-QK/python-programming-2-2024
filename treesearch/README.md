@@ -58,9 +58,9 @@ In the TreeMapper project, we use the `max_scraped` parameter to limit the numbe
 
 ### 3. Web Scraping and Tokenizing
 - **Tokenize Function**: Implement a function to convert a string of webpage content into a list of tokens. This involves converting the text to lowercase and splitting it on whitespace.
-- **Scrape URLs Function**: Write a function to fetch the HTML content of a webpage, parse it, and extract all hyperlinks. Normalize these URLs to ensure they are absolute, and filter out duplicates.
+- **Scrape URLs Function**: Write a function to fetch the HTML content of a webpage, parse it, and extract all hyperlinks. Normalize these URLs to ensure they are absolute, and filter out duplicates. I suggest `urljoin` from the `urllib.parse` package to normalize the hyperlinks. 
 - **Scrape and Tokenize Function**: 
-  - Use a queue to manage the URLs to be visited and a set to keep track of visited URLs.
+  - Use a queue or list to manage the URLs to be visited and a list to keep track of visited URLs.
   - Fetch and parse the HTML content of each URL, tokenize the content, and insert these tokens into the BSTree.
   - Add new URLs to the queue if they haven't been visited and the maximum scrape limit hasn't been reached.
   - This approach ensures the scraping process is efficient and avoids revisiting the same URLs or getting stuck in infinite loops.
