@@ -12,7 +12,6 @@ The TreeSearch project involves creating a binary search tree (BSTree) to store 
 - Develop a basic search engine interface.
 
 ## Prerequisites
-- Basic knowledge of Python programming.
 - Understanding of data structures, especially binary search trees.
 - Familiarity with web scraping using libraries like `requests` and `BeautifulSoup`.
 
@@ -37,14 +36,6 @@ In the TreeMapper project, we use the `max_scraped` parameter to limit the numbe
 1. **Python's Recursion Depth**:
    Python has a default recursion depth limit of 3000. This means that a recursive function cannot call itself more than 3000 times before it results in a RecursionError. To avoid hitting this limit and causing our program to crash, we must limit the depth of our traversal and the amount of data ingested.
 
-2. **Performance and Resource Management**:
-   Limiting the number of URLs to be scraped ensures that our program runs efficiently and does not consume excessive memory or processing power. This is particularly important when dealing with web scraping, as fetching and processing large amounts of data can be resource-intensive.
-
-3. **Practical Considerations**:
-   By setting a `max_scraped` limit, we ensure that our search engine remains responsive and manageable, providing a reasonable scope for our searches. This allows us to focus on the quality of the data rather than the quantity, ensuring that our binary search tree remains efficient and effective.
-
-
-
 ## Detailed Steps
 
 ### 1. TreeNode Class
@@ -52,6 +43,7 @@ In the TreeMapper project, we use the `max_scraped` parameter to limit the numbe
 - Initialize these properties in the constructor.
 
 ### 2. BSTree Class
+- Define the properties of the tree: root, initialized to `None`.
 - **Insert Method**: Add a method to insert a new node into the tree. This method should recursively find the correct position based on the key.
 - **Search Method**: Implement a method to search for a node by its key. This method should also be recursive and return the node if found, or `None` if not.
 - **Inorder Traversal Method**: Create a method to traverse the tree in order and print each node's key and data. This helps verify the structure of the tree.
