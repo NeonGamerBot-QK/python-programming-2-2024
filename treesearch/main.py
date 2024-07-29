@@ -7,6 +7,7 @@ from urllib.parse import urljoin
 # Function to tokenize the content
 def tokenize(content):
     # YOUR CODE GOES HERE
+    return content.lower().split()
     pass
 
 # Function to scrape URLs from a given webpage
@@ -16,6 +17,17 @@ def scrape_urls(base_url):
     
     urls = []
     # YOUR CODE GOES HERE
+    # css filter :D
+    # links = soup.select(selector='a[href*="catalogue/"][title*=""]')
+    links = soup.select(selector='a')
+    # filter('links')
+    print(links)
+    # filter(links)
+    for i in range(len(links)):
+        # print(i)
+        # print(links[i])
+        url = str(links[i]).split('"')[1]
+        print(url)
     return urls
 
 def scrape_and_tokenize(url, max_scraped, search_tree=None):
@@ -37,7 +49,7 @@ def run_search_engine():
     # Scrape data and insert into binary tree
     start_url = "https://books.toscrape.com/"
     max_scraped = 10
-
+    scrape_urls(start_url)
     search_tree = scrape_and_tokenize(start_url, max_scraped)
     
     # Perform in-order traversal (optional for verification)
