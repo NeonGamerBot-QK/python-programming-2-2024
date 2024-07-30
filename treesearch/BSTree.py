@@ -1,62 +1,46 @@
 from TreeNode import *
-
 class BSTree:
     def __init__(self):
-        # YOUR CODE GOES HERE
         self.root = None
-        pass
 
-    def insert(self, value):
-        # YOUR CODE GOES HERE
-        if not self.root:
-            self.root = TreeNode(value)
+    def insert(self, key, data):
+        if self.root is None:
+            self.root = TreeNode(key, data)
         else:
-            self._insert(self.root, value)
-        pass
+            self._insert_recursive(self.root, key, data)
 
-    def _insert(self, node, value):
-        # YOUR CODE GOES HERE
-        if value < node.value:
+    def _insert_recursive(self, node, key, data):
+        if key == node.key:
+            node.data.append(data)
+        elif key < node.key:
             if node.left is None:
-                node.left = TreeNode(value)
+                node.left = TreeNode(key, data)
             else:
-                self._insert_recursive(node.left, value)
+                self._insert_recursive(node.left, key, data)
         else:
             if node.right is None:
-                node.right = TreeNode(value)
+                node.right = TreeNode(key, data)
             else:
-                self._insert_recursive(node.right, value)
+                self._insert_recursive(node.right, key, data)
 
+    def search(self, key):
+        return self._search_recursive(self.root, key)
 
-
-    def search(self, value):
-        # YOUR CODE GOES HERE
-        return self._search_recursive(self.root, value)
-        pass
-    
     def _search_recursive(self, node, key):
-        # YOUR CODE GOES HERE
-        if node is None:
-            return False
-        if value == node.value:
-            return True
-        elif key < node.value:
+        if node is None or node.key == key:
+            return node
+        elif key < node.key:
             return self._search_recursive(node.left, key)
         else:
             return self._search_recursive(node.right, key)
 
-        pass
-    
     def inorder_traversal(self):
-        # YOUR CODE GOES HERE
-        return self._inorder_recursive(self.root, [])
-        pass
-    
+        result = []
+        self._inorder_recursive(self.root, result)
+        return result
+
     def _inorder_recursive(self, node, result):
-        # YOUR CODE GOES HERE
         if node:
             self._inorder_recursive(node.left, result)
-            result.append(node.value)
+            result.append((node.key, node.data))
             self._inorder_recursive(node.right, result)
-        return result
-        pass
